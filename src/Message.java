@@ -2,16 +2,20 @@ import java.io.Serializable;
 
 public class Message implements Serializable {
 
+    private static int counterID = 0;
     private boolean isRead;
     private String sender;
     private String receiver;
     private String body;
+
+    private final int id;
 
     public Message(boolean isRead, String sender, String receiver, String body) {
         this.isRead = isRead;
         this.sender = sender;
         this.receiver = receiver;
         this.body = body;
+        this.id = ++counterID;
     }
 
     public Message(String sender, String receiver, String body) {
@@ -20,6 +24,10 @@ public class Message implements Serializable {
 
     public boolean isRead() {
         return isRead;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setRead(boolean read) {
@@ -52,11 +60,12 @@ public class Message implements Serializable {
 
     @Override
     public String toString() {
-        return "Message{" +
+        return "Message [ " +
                 "isRead=" + isRead +
                 ", sender='" + sender + '\'' +
                 ", receiver='" + receiver + '\'' +
                 ", body='" + body + '\'' +
-                '}';
+                ", id='" + id + '\'' +
+                ']';
     }
 }

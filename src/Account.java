@@ -15,7 +15,6 @@ public class Account implements Serializable {
         this.messages = new ArrayList<>();
     }
 
-
     public String getUsername() {
         return username;
     }
@@ -40,10 +39,13 @@ public class Account implements Serializable {
         this.messages = messages;
     }
 
-    @Override
-    public String toString() {
-        return "Account{" + "username='" + username + '\'' + ", authToken=" + authToken + ", messages=" + messages + '}';
+    public void addMessage(Message newMessage) {
+        messages.add(newMessage);
     }
 
+    @Override
+    public String toString() {
+        return "Account [ " + "username='" + username + '\'' + ", authToken=" + authToken + ", messages=" + messages + '}';
+    }
 
 }
